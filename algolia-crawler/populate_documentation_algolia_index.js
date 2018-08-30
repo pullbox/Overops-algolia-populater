@@ -55,6 +55,7 @@ function readReadme(doc) {
   xhr.addEventListener("readystatechange", function () {
 
     //callback function once completed!
+
     if (this.readyState === this.DONE) {
     
       // Begin accessing JSON data here
@@ -62,14 +63,12 @@ function readReadme(doc) {
       //console.log(obj.title);
 
       //console.log(obj);
-      if (obj !== null) {
+      if ((obj !== null) && (typeof obj._id != 'undefined')) {
         createAlgoliaIndex(obj, doc, function(err,dataJson) {
-
         if (err) {
           console.log("Add Algolia index:", err);
           throw err;
         }
-
         //console.log("Json:", dataJson);
         if (dataJson) {
           writealgoliaIndex(dataJson, function(err, result) {
@@ -78,18 +77,15 @@ function readReadme(doc) {
               throw err;
             }
             console.log("Index added:", dataJson.title, result);
-
           });
         }
-
       });
-
       } // obj !== null
     }  // readystate == done
   });
 
   //console.log("zenConfig", zenConfig);
-  console.log("adminkey:", zenConfig.auth.readmeAdminKey);
+  //console.log("adminkey:", zenConfig.auth.readmeAdminKey);
   xhr.open("GET", "https://dash.readme.io/api/v1/docs/" + doc.slug);
   xhr.setRequestHeader("x-readme-version", "v4.16");
   xhr.setRequestHeader("Accept",  "application/json");
@@ -288,7 +284,6 @@ function localeJson(varlocale) {
   locale ["name"] = 'English';
   locale ["rtl"] = false;
   
-
   return  locale;
 }
 
