@@ -1,0 +1,401 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"read",
+				"readmeAdminKey"
+			],
+			[
+				"data",
+				"datatosearch"
+			],
+			[
+				"categ",
+				"categorytitle"
+			],
+			[
+				"ca",
+				"category_id"
+			],
+			[
+				"cate",
+				"categorytitle"
+			],
+			[
+				"the",
+				"theCategories"
+			],
+			[
+				"se",
+				"section_id"
+			],
+			[
+				"cre",
+				"createStdAlgoliaJson"
+			],
+			[
+				"gest",
+				"getPosts"
+			],
+			[
+				"create",
+				"createAlgoliaIndex"
+			],
+			[
+				"body",
+				"body_html"
+			],
+			[
+				"re",
+				"readyState"
+			],
+			[
+				"dele",
+				"deletelugsMongodb"
+			],
+			[
+				"w",
+				"writetoMongodb"
+			],
+			[
+				"pa",
+				"pagedata"
+			],
+			[
+				"sl",
+				"slug"
+			],
+			[
+				"js",
+				"jsonObj"
+			],
+			[
+				"s",
+				"stringify"
+			],
+			[
+				"bo",
+				"body2"
+			],
+			[
+				"e",
+				"error"
+			],
+			[
+				"al",
+				"algoliaAdminKey"
+			],
+			[
+				"p",
+				"posts"
+			],
+			[
+				"Un",
+				"UnauthorizedError"
+			],
+			[
+				"desc",
+				"description"
+			],
+			[
+				"ap",
+				"Daniels_application_server"
+			],
+			[
+				"D",
+				"Daniels_Storage_Server"
+			],
+			[
+				"Danie",
+				"DanielKey"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				"Syntax Check"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Build With: Python"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/populate_documentation_algolia_index.js",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-AlgoliaSearch-ZendeskHC/OverOps-AlgoliaSearch-ZendeskHC/README.md",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/app/gulpfile.babel.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/app/package.json",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/app/.babelrc",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/.gitignore",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/scripts/release.sh",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/app/gulp/buildJS.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/app/dist/algoliasearch.zendesk-hc.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk/app/index.html",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk/app/src/autocomplete.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk/app/src/instantsearch.js",
+		"/Users/danielbechtel/Documents/hcalgolia-original.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/node_modules/node-zendesk/lib/client/client.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/node_modules/node-zendesk/lib/client.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/configuration.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/populate_community_algolia_index.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/node_modules/node-zendesk/lib/client/community/topics.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/node_modules/node-zendesk/lib/client/community/posts.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/overopsUtil.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/zendesk-to-MongoDB.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/zendesk-test.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/readme-to-MongoDB.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/Zendesk-to-MongoDB.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/lib/client/client.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/package.json",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/test_crawler.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/emulate-device.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/HelpCenter/topics-list.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/HelpCenter/sections-list.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/readme-http-crawler.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/readme-get-URLs_data.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/HelpCenter/zendeskConfig.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/HelpCenter/show_post.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/server.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/zendesk-test.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/lib/client/posts.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/lib/client.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/lib/client/topics.js",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/zendeskconfig",
+		"/Users/danielbechtel/Documents/Development-tools/development/zendesk-JS-crawler/examples/exampleConfig.js",
+		"/Users/danielbechtel/Documents/Zendesk/Site/zendesk-email-template-new-v2.html",
+		"/Users/danielbechtel/Documents/Zendesk/Site/Zendesk 08-07-2018.css",
+		"/Users/danielbechtel/Downloads/overops.css",
+		"/Users/danielbechtel/Downloads/fancybox.css",
+		"/usr/local/Cellar/ruby/2.5.1/lib/ruby/2.5.0/json/common.rb",
+		"/Users/danielbechtel/Downloads/Agent Properties v1d2 working copy/AgentPropertiesv1d2workingcopy.html",
+		"/Users/danielbechtel/Downloads/danielstestdoc-2018-7-23/v4.12/Administration Settings/Account Settings.md",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_2/provisioning/playbook.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_lamp/provisioning/vars/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_lamp/roles/Islandora-Devops.tomcat8/tasks/config.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_lamp/roles/Islandora-Devops.tomcat8/tasks/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_lamp/roles/pullb0x.overops/vars/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_lamp/roles/pullb0x.overops/tasks/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_lamp/provisioning/playbook.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_plain/provisioning/playbook.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu/provisioning/playbook.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu/roles/pullb0x.overops/tasks/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu/roles/geerlingguy.apache/tasks/main.yml",
+		"/Users/danielbechtel/Downloads/bugtale_agent.12386 (1).dead",
+		"/Users/danielbechtel/Documents/Zendesk/Site/text compare/KB",
+		"/Users/danielbechtel/Documents/Zendesk/Site/text compare/IO",
+		"/Users/danielbechtel/Desktop/PDI-7/data-integration/spoon.sh",
+		"/Users/danielbechtel/Desktop/data-integration/spoon.sh",
+		"/Users/danielbechtel/Documents/Coding/clamav-0.100.0/Makefile.in",
+		"/Users/danielbechtel/Documents/Zendesk/Documentation Source/Swagger_original_convert.json",
+		"/Users/danielbechtel/Documents/Zendesk/Documentation Source/swagger.yml",
+		"/Users/danielbechtel/Documents/Zendesk/Documentation Source/swagger.json",
+		"/Users/danielbechtel/Documents/Zendesk/Documentation Source/Swagger-test.json",
+		"/Users/danielbechtel/Downloads/bugtale_agent.12386.dead",
+		"/Users/danielbechtel/Documents/Vagrant/Ansible-EC2/roles/Aplyca.EC2Describe/defaults/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ansible-EC2/provisioning/playbook_test_ec2.retry",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_plain/provisioning/inventory",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_lamp/Vagrantfile",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_multi/Vagrantfile",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_multi/provisioning/playbook.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu plain/provisioning/playbook.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_multi/provisioning/inventory",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu plain/provisioning/vars/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu plain/ubuntu-xenial-16.04-cloudimg-console.log",
+		"/Users/danielbechtel/Documents/Zendesk/Site/default.css",
+		"/Users/danielbechtel/Documents/Zendesk/Site/Overops.html",
+		"/Users/danielbechtel/Documents/Zendesk/Site/default.html",
+		"/Users/danielbechtel/Documents/Zendesk/Site/OverOps.css",
+		"/Users/danielbechtel/Documents/Zendesk/Python-scripts/Zendesk-test-daniel.py",
+		"/Users/danielbechtel/Documents/Zendesk/Python-scripts/Zendesk-sample.py",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu-Docker/Sample_test.py",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu-Docker/Vagrantfile",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu-Docker/provisioning/playbook.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu-Docker/provisioning/vars/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu-Docker/provisioning/inventory",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_2/Vagrantfile",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_2/roles/kbrebanov.telegraf/defaults/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_2/provisioning/inventory",
+		"/Users/danielbechtel/Documents/Vagrant/Ubuntu_2/roles/geerlingguy.java/defaults/main.yml",
+		"/Users/danielbechtel/Documents/Vagrant/OpenSuse-42-3/provisioning/inventory",
+		"/Users/danielbechtel/Documents/Vagrant/OpenSuse-42-3/Vagrantfile",
+		"/Users/danielbechtel/Downloads/bugtale_service (5).log",
+		"/Users/danielbechtel/Downloads/log 2/bugtale_service.log",
+		"/Users/danielbechtel/Documents/Zendesk/Documentation Source/Jira Integration.html"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Algolia-populaters.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 867.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 364.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
