@@ -171,6 +171,11 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler"
+	],
 	"file_history":
 	[
 		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/populate_documentation_algolia_index.js",
