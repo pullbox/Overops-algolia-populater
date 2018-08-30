@@ -256,7 +256,7 @@ function localeJson(varlocale) {
 
   
   var locale = {}  // empty object
-  locale ["locale"] = varlocale;
+  locale ["locale"] = 'en-us';
   locale ["name"] = 'English';
   locale ["rtl"] = false;
   
