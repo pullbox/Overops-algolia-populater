@@ -4,7 +4,7 @@
     "headless-chrome-crawler": "^1.8.0",
     "html-to-text": "^4.0.0",
     "json-query": "^2.2.2",
-    "mongodb": "^3.1.3",
+    "mongodb": "^3.1.4",
     "node-zendesk": "^1.3.0",
     "redis": "^2.8.0",
     "simple-json-filter": "^0.3.0",
