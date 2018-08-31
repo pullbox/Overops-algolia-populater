@@ -2,7 +2,7 @@ var mongo = require('mongodb');
 const HCCrawler = require('headless-chrome-crawler');
 
 
-// deletelugsMongodb();
+deletelugsMongodb();
 
 (async () => {
   const crawler = await HCCrawler.launch({
