@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"zen",
+				"zenConfig"
+			],
+			[
+				"cat",
+				"categoryobj"
+			],
+			[
+				"mongo",
+				"mongoclient"
+			],
+			[
+				"Mongo",
+				"MongoClient"
+			],
+			[
 				"read",
 				"readmeAdminKey"
 			],
@@ -115,6 +131,42 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "algolia-crawler/populate_community_algolia_index.js",
+			"settings":
+			{
+				"buffer_size": 6295,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "algolia-crawler/populate_zendesk_algolia_index.js",
+			"settings":
+			{
+				"buffer_size": 8822,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "algolia-crawler/delete_records_from_algolia_index.js",
+			"settings":
+			{
+				"buffer_size": 799,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "algolia-crawler/populate_documentation_algolia_index.js",
+			"settings":
+			{
+				"buffer_size": 10345,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -174,10 +226,20 @@
 	"expanded_folders":
 	[
 		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater",
-		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler"
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/node_modules",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/node_modules/algoliasearch",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/node_modules/algoliasearch/src",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/node_modules/mongodb",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/node_modules/mongodb/lib"
 	],
 	"file_history":
 	[
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler/Test/doc_to_mongodb_prototype.js",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler/readme-to-MongoDB.js",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler/configuration.js",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler/doc_to_mongodb_prototype.js",
+		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-Algolia-populater/Overops-algolia-populater/algolia-crawler/populate_documentation_algolia_index_test.js",
 		"/Users/danielbechtel/Documents/Development-tools/development/Search-crawlers/algolia-crawler/populate_documentation_algolia_index.js",
 		"/Users/danielbechtel/Documents/Development-tools/GitHub/OverOps-AlgoliaSearch-ZendeskHC/OverOps-AlgoliaSearch-ZendeskHC/README.md",
 		"/Users/danielbechtel/Documents/Development-tools/development/algoliasearch-zendesk-master/app/gulpfile.babel.js",
@@ -281,7 +343,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -295,6 +357,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console",
+			"'",
+			", name:",
+			"{ id:",
+			"return",
+			" ==",
+			"} else  if (",
+			"} else  if (("
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -302,6 +372,13 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\"",
+			", \"name\":",
+			"{ \"id\":",
+			":",
+			"name:",
+			":",
+			"{ "
 		],
 		"reverse": false,
 		"show_context": true,
@@ -312,8 +389,129 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "algolia-crawler/populate_community_algolia_index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4868,
+								4868
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2922.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "algolia-crawler/populate_zendesk_algolia_index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8822,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								259,
+								222
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "algolia-crawler/delete_records_from_algolia_index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								108,
+								793
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "algolia-crawler/populate_documentation_algolia_index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10290,
+								10290
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4461.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -360,7 +558,7 @@
 	"project": "Algolia-populaters.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
