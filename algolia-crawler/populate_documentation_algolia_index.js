@@ -4,9 +4,68 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var algoliasearch = require('algoliasearch');
 var htmlToText = require('html-to-text');
 var zenConfig = require('./configuration');
+var jsonQuery = require('json-query');
+
+
+var categories =  `[ 
+                  { "id": "5b69a12a98d4d300037af4fe", "name": "SaaS Deployment" } ,
+                  { "id": "5b86ae6bf96d6b0003c0bd91", "name": "SaaS Deployment" } , 
+                  { "id": "5b69a12a98d4d300037af50c", "name": "Attaching the Micro-Agent" },
+                  { "id": "5b86ae6bf96d6b0003c0bd9f", "name": "Attaching the Micro-Agent" }, 
+                  { "id": "5b69a12a98d4d300037af50b", "name": "On-Premises Deployment" },
+                  { "id": "5b86ae6bf96d6b0003c0bd9e", "name": "On-Premises Deployment" },
+                  { "id": "5b69a12a98d4d300037af508", "name": "Hybrid Deployment"},
+                  { "id": "5b86ae6bf96d6b0003c0bd9b", "name": "Hybrid Deployment"},
+                  { "id": "5b69a12a98d4d300037af50d", "name": "Reporting and Publishing Metrics"},
+                  { "id": "5b86ae6bf96d6b0003c0bda0", "name": "Reporting and Publishing Metrics"},
+                  { "id": "5b69a12a98d4d300037af504", "name": "The Dashboard"},
+                  { "id": "5b86ae6bf96d6b0003c0bd97", "name": "The Dashboard"},
+                  { "id": "5b86ae6bf96d6b0003c0bd93", "name": "Resolving Error"},
+                  { "id": "5b69a12a98d4d300037af500", "name": "Resolving Error"},
+                  { "id": "5b69a12a98d4d300037af511", "name": "Video Tutorials"},
+                  { "id": "5b86ae6bf96d6b0003c0bda4", "name": "Video Tutorials"},
+                  { "id": "5b69a12a98d4d300037af506", "name": "Integrations to Overops"},
+                  { "id": "5b69a12a98d4d300037af50a", "name": "Before Installing Overops"},
+                  { "id": "5b86ae6bf96d6b0003c0bd9d", "name": "Before Installing Overops"},
+                  { "id": "5b69a12a98d4d300037af507", "name": "Upgrading or Uninstalling Overops"},
+                  { "id": "5b86ae6bf96d6b0003c0bd9a", "name": "Upgrading or Uninstalling Overops"},
+                  { "id": "5b69a12a98d4d300037af4ff", "name": "Get Started"},
+                  { "id": "5b86ae6bf96d6b0003c0bd92", "name": "Get Started"},
+                  { "id": "5b69a12a98d4d300037af509", "name": "Integrations to Overops"},
+                  { "id": "5b86ae6bf96d6b0003c0bd99", "name": "Integrations to Overops"},
+                  { "id": "5b69a12a98d4d300037af502", "name": "General"},
+                  { "id": "5b86ae6bf96d6b0003c0bd95", "name": "General"},
+                  { "id": "5b86ae6bf96d6b0003c0bd9c", "name": "Security"},
+                  { "id": "5b86ae6bf96d6b0003c0bd98", "name": "OverOps Switches"},
+                  { "id": "5b69a12a98d4d300037af505", "name": "OverOps Switches"},
+                  { "id": "5b69a12a98d4d300037af501", "name": "Whats New"},
+                  { "id": "5b86ae6bf96d6b0003c0bd94", "name": "Whats New"},
+                  { "id": "5b86ae6bf96d6b0003c0bda1", "name": "Collector Advanced Settings"},
+                  { "id": "5b69a12a98d4d300037af50e", "name": "Collector Advanced Settings"},
+                  { "id": "5b69a12a98d4d300037af50f", "name": "Agent Advanced Settings"},
+                  { "id": "5b86ae6bf96d6b0003c0bda2", "name": "Agent Advanced Settings"},
+                  { "id": "5b69a12a98d4d300037af503", "name": "Administrative Settings"},
+                  { "id": "5b86ae6bf96d6b0003c0bd96", "name": "Administrative Settings"}
+                ] `;
+                
+
+
+
+console.log(categories);
+console.log("-------------");
+
+catjson = JSON.parse(categories);
+console.log(catjson);
 
 
 listslugsMongodb();
+
+
+
+
+
+
+
 
 
 
@@ -37,7 +96,7 @@ function listslugsMongodb() {
       //console.log("Err:", err); 
         db.close(false, function() {
 
-        console.log("dano");
+        console.log("Mongo Done");
 
 
       });
@@ -231,54 +290,23 @@ function sectionJson(sec_id) {
 
 function translateCategory(id) {
 
-if ((id == '5b69a12a98d4d300037af4fe') || (id == '5b86ae6bf96d6b0003c0bd91')) {
-        return 'SaaS Deployment';
-    } else  if ((id == '5b69a12a98d4d300037af50c') || (id == '5b86ae6bf96d6b0003c0bd9f')) {
-       return 'Attaching the Micro-Agent';
-    } else  if ((id == '5b69a12a98d4d300037af50b') || (id == '5b86ae6bf96d6b0003c0bd9e')) {
-       return 'On-Premises Deployment';
-    } else  if ((id == '5b69a12a98d4d300037af508') || (id == '5b86ae6bf96d6b0003c0bd9b')) {
-       return 'Hybrid Deployment';
-    } else  if ((id == '5b69a12a98d4d300037af50d') || (id == '5b86ae6bf96d6b0003c0bda0')) {
-       return 'Reporting and Publishing Metrics';
-    } else  if (id == '5b69a12a98d4d300037af504') {
-       return 'The Dashboard';
-    } else  if (id == '5b69a12a98d4d300037af500') {
-       return 'Resolving Error';
-    } else  if (id == '5b69a12a98d4d300037af511') {
-       return 'Video Tutorials';
-    } else  if (id == '5b69a12a98d4d300037af506') {
-        return 'Integrations to Overops'
-    } else  if ((id == '5b69a12a98d4d300037af50a') || (id == '5b86ae6bf96d6b0003c0bd9d'))   {
-        return 'Before Installing Overops'
-    } else  if (id == '5b69a12a98d4d300037af507') {
-        return 'Upgrading or Uninstalling Overops'
-    } else  if ((id == '5b69a12a98d4d300037af4ff') || (id == '5b86ae6bf96d6b0003c0bd92')) {
-        return 'Get Started'
-    } else  if (id == '5b69a12a98d4d300037af509') {
-        return 'Integrations to Overops'
-    } else  if ((id == '5b69a12a98d4d300037af502') || (id == '5b86ae6bf96d6b0003c0bd95')) {
-        return 'General'
-    } else  if (id == '5b69a12a98d4d300037af505') {
-        return 'OverOps Switches'
-    } else  if (id == '5b69a12a98d4d300037af501') {
-        return 'What`s New'
-    } else  if (id == '5b69a12a98d4d300037af50e') {
-        return 'Collector Advanced Settings'
-    } else  if ((id == '5b69a12a98d4d300037af50f') || (id == '5b86ae6bf96d6b0003c0bda2')) {
-        return 'Agent Advanced Settings'
-    } else  if ((id == '5b69a12a98d4d300037af503') || ('5b86ae6bf96d6b0003c0bd96')) {
-       return 'Administrative Settings';
-    } else {
-        return id;
-    }
+var categoryobj =  jsonQuery('[id=' + id + ']', {
+              data: catjson
+              });
+
+console.log("categoryobj: ", categoryobj.value);
+if (categoryobj.value == null) {
+    return id;
+  } else {
+    return categoryobj.value.name;
+  }
 }
 
 function translateVersion(id) {
 
 if (id == '5b69a12a98d4d300037af5fd') {
         return 4.16;
-    } else  if ( id == '5b86ae6bf96d6b0003c0be97') {
+    } else if (id == '5b86ae6bf96d6b0003c0be97') {
         return 4.17;
     } else {
         return id;
