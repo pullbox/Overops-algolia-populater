@@ -275,8 +275,8 @@ function createStdAlgoliaJson(zendeskdata, callback) {
         page ["id"] = zendeskdata.id;
         page ["objectID"] = zendeskdata.id;
         page ["source"] = "KnowledgeBase";
-        page ["version"] = null;
-        //page ["votes"] = null;
+        page ["version"] = 0.00;
+       
         page ["url"] = zendeskdata.html_url;
         page ["author"] = zendeskdata.author_id;
 

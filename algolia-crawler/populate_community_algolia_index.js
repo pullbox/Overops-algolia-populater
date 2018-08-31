@@ -195,7 +195,7 @@ function createStdAlgoliaJson(zendeskdata, callback) {
 
 
         page ["source"] = "Community";
-        page ["version"] = null;
+        page ["version"] = 0.00;
 
         page ["url"] = zendeskdata.html_url;
         page ["author"] = zendeskdata.author_id;
