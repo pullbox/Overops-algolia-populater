@@ -35,6 +35,14 @@ function listslugsMongodb() {
 
       //console.log("err done in listslugsMongodb");
       //console.log("Err:", err); 
+        db.close(false, function() {
+
+        console.log("dano");
+
+
+      });
+
+
     });
 
   });
@@ -87,7 +95,7 @@ function readReadme(doc) {
   //console.log("zenConfig", zenConfig);
   //console.log("adminkey:", zenConfig.auth.readmeAdminKey);
   xhr.open("GET", "https://dash.readme.io/api/v1/docs/" + doc.slug);
-  xhr.setRequestHeader("x-readme-version", "v4.16");
+  xhr.setRequestHeader("x-readme-version", zenConfig.auth.DocVersion_current);
   xhr.setRequestHeader("Accept",  "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.setRequestHeader("Authorization", "Basic " + zenConfig.auth.readmeAdminKey);
@@ -223,15 +231,15 @@ function sectionJson(sec_id) {
 
 function translateCategory(id) {
 
-if (id == '5b69a12a98d4d300037af4fe') {
+if ((id == '5b69a12a98d4d300037af4fe') || (id == '5b86ae6bf96d6b0003c0bd91')) {
         return 'SaaS Deployment';
-    } else  if (id == '5b69a12a98d4d300037af50c') {
+    } else  if ((id == '5b69a12a98d4d300037af50c') || (id == '5b86ae6bf96d6b0003c0bd9f')) {
        return 'Attaching the Micro-Agent';
-    } else  if (id == '5b69a12a98d4d300037af50b') {
+    } else  if ((id == '5b69a12a98d4d300037af50b') || (id == '5b86ae6bf96d6b0003c0bd9e')) {
        return 'On-Premises Deployment';
-    } else  if (id == '5b69a12a98d4d300037af508') {
+    } else  if ((id == '5b69a12a98d4d300037af508') || (id == '5b86ae6bf96d6b0003c0bd9b')) {
        return 'Hybrid Deployment';
-    } else  if (id == '5b69a12a98d4d300037af50d') {
+    } else  if ((id == '5b69a12a98d4d300037af50d') || (id == '5b86ae6bf96d6b0003c0bda0')) {
        return 'Reporting and Publishing Metrics';
     } else  if (id == '5b69a12a98d4d300037af504') {
        return 'The Dashboard';
@@ -241,15 +249,15 @@ if (id == '5b69a12a98d4d300037af4fe') {
        return 'Video Tutorials';
     } else  if (id == '5b69a12a98d4d300037af506') {
         return 'Integrations to Overops'
-    } else  if (id == '5b69a12a98d4d300037af50a') {
+    } else  if ((id == '5b69a12a98d4d300037af50a') || (id == '5b86ae6bf96d6b0003c0bd9d'))   {
         return 'Before Installing Overops'
     } else  if (id == '5b69a12a98d4d300037af507') {
         return 'Upgrading or Uninstalling Overops'
-    } else  if (id == '5b69a12a98d4d300037af4ff') {
+    } else  if ((id == '5b69a12a98d4d300037af4ff') || (id == '5b86ae6bf96d6b0003c0bd92')) {
         return 'Get Started'
     } else  if (id == '5b69a12a98d4d300037af509') {
         return 'Integrations to Overops'
-    } else  if (id == '5b69a12a98d4d300037af502') {
+    } else  if ((id == '5b69a12a98d4d300037af502') || (id == '5b86ae6bf96d6b0003c0bd95')) {
         return 'General'
     } else  if (id == '5b69a12a98d4d300037af505') {
         return 'OverOps Switches'
@@ -257,9 +265,9 @@ if (id == '5b69a12a98d4d300037af4fe') {
         return 'What`s New'
     } else  if (id == '5b69a12a98d4d300037af50e') {
         return 'Collector Advanced Settings'
-    } else  if (id == '5b69a12a98d4d300037af50f') {
+    } else  if ((id == '5b69a12a98d4d300037af50f') || (id == '5b86ae6bf96d6b0003c0bda2')) {
         return 'Agent Advanced Settings'
-    } else  if (id == '5b69a12a98d4d300037af503') {
+    } else  if ((id == '5b69a12a98d4d300037af503') || ('5b86ae6bf96d6b0003c0bd96')) {
        return 'Administrative Settings';
     } else {
         return id;
@@ -269,7 +277,9 @@ if (id == '5b69a12a98d4d300037af4fe') {
 function translateVersion(id) {
 
 if (id == '5b69a12a98d4d300037af5fd') {
-        return '4.16';
+        return 4.16;
+    } else  if ( id == '5b86ae6bf96d6b0003c0be97') {
+        return 4.17;
     } else {
         return id;
     }
