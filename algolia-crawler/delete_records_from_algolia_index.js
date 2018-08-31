@@ -19,9 +19,7 @@ deleteagoliaIndex();
 
 
 
-        index.deleteby({
-            filters: 'version:' + zenConfig.Auth.DocVersion_old
-            }, function(err, content) {
+        index.deleteBy( { filters: 'version:' + zenConfig.auth.DocVersion_old.substring(1,5) }, function(err, content) {
             
             if (err) {
               console.error(err);

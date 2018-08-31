@@ -49,15 +49,14 @@ var categories =  `[
                 ] `;
                 
 
-
-
-console.log(categories);
-console.log("-------------");
-
+// create JSON object 
 catjson = JSON.parse(categories);
-console.log(catjson);
 
 
+// Delete old indexs based on "old Version number"
+deleteagoliaIndex();
+
+// Add/update current index records
 listslugsMongodb();
 
 
@@ -182,7 +181,7 @@ function readReadme(doc) {
               throw err;
             }
 
-            console.log("Index added", content);
+          //  console.log("Index added", content);
             return callback(null, content);
           });
 
@@ -294,7 +293,7 @@ var categoryobj =  jsonQuery('[id=' + id + ']', {
               data: catjson
               });
 
-console.log("categoryobj: ", categoryobj.value);
+//console.log("categoryobj: ", categoryobj.value);
 if (categoryobj.value == null) {
     return id;
   } else {
@@ -327,6 +326,34 @@ function localeJson(varlocale) {
 
 
 
+
+
+
+
+
+
+
+
+  function deleteagoliaIndex() {
+    var  algoliaApplicationID = zenConfig.auth.algoliaApplicationID;
+    var  algoliaAdminKey = zenConfig.auth.algoliaAdminKey;
+    var  algoliaIndexName = zenConfig.auth.algoliaIndex;
+    var  algolia = algoliasearch(algoliaApplicationID, algoliaAdminKey);
+    var index = algolia.initIndex(algoliaIndexName);
+
+
+
+        index.deleteBy( { filters: 'version:' + zenConfig.auth.DocVersion_old.substring(1,5) }, function(err, content) {
+            
+            if (err) {
+              console.error(err);
+              throw err;
+            }
+
+            console.log("Indexes deleted", content);
+         
+          });
+  }
 
 
 
