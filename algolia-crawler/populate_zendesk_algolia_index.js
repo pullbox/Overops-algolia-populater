@@ -45,7 +45,9 @@ function getArticles() {
     }
 
     result.forEach(function(value) {
-        if (value.section_id !== 360001712713) {
+        if (value.section_id !== 360001712713) {   // Old Documentation
+          if (value.section_id !== 360001115753) {  // JP Morgan Chase 
+            if (value.section_id !==204131907) { // Internal Knowledge Base
                 createStdAlgoliaJson(value, function(err,dataJson) {
                   if (err) {
                       console.log("JSON Algolia:", err);
@@ -61,7 +63,9 @@ function getArticles() {
                       });
                   }
                 });
-        } // value.section_ID != 
+            } // Internal Knowledge Base
+          } // section id == JP Morgan Chase & CO
+        } // section ID == OLD Documentation
     }); // result.forEach value
   }); // community.articles
 } // getArticles
