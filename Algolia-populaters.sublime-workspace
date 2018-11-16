@@ -162,16 +162,28 @@
 			"file": "algolia-crawler/readme-APIs-to-MongoDB.js",
 			"settings":
 			{
-				"buffer_size": 3135,
+				"buffer_size": 3137,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"contents": "\nvar mongo = require('mongodb');\nvar XMLHttpRequest = require(\"xmlhttprequest\").XMLHttpRequest;\nvar algoliasearch = require('algoliasearch');\nvar htmlToText = require('html-to-text');\nvar zenConfig = require('./configuration');\nvar jsonQuery = require('json-query');\n\n\nvar categories =  `[ \n                  { \"id\": \"5b69a12a98d4d300037af4fe\", \"name\": \"SaaS Deployment\" } ,\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd91\", \"name\": \"SaaS Deployment\" } , \n                  { \"id\": \"5b69a12a98d4d300037af50c\", \"name\": \"Attaching the Micro-Agent\" },\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd9f\", \"name\": \"Attaching the Micro-Agent\" }, \n                  { \"id\": \"5b69a12a98d4d300037af50b\", \"name\": \"On-Premises Deployment\" },\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd9e\", \"name\": \"On-Premises Deployment\" },\n                  { \"id\": \"5b69a12a98d4d300037af508\", \"name\": \"Hybrid Deployment\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd9b\", \"name\": \"Hybrid Deployment\"},\n                  { \"id\": \"5b69a12a98d4d300037af50d\", \"name\": \"Reporting and Publishing Metrics\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bda0\", \"name\": \"Reporting and Publishing Metrics\"},\n                  { \"id\": \"5bbeee6ae658fb000339e3da\", \"name\": \"The Dashboard\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd97\", \"name\": \"The Dashboard\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd93\", \"name\": \"Resolving Error\"},\n                  { \"id\": \"5b69a12a98d4d300037af500\", \"name\": \"Resolving Error\"},\n                  { \"id\": \"5b69a12a98d4d300037af511\", \"name\": \"Video Tutorials\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bda4\", \"name\": \"Video Tutorials\"},\n                  { \"id\": \"5b69a12a98d4d300037af506\", \"name\": \"Integrations to Overops\"},\n                  { \"id\": \"5b69a12a98d4d300037af50a\", \"name\": \"Before Installing Overops\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd9d\", \"name\": \"Before Installing Overops\"},\n                  { \"id\": \"5b69a12a98d4d300037af507\", \"name\": \"Upgrading or Uninstalling Overops\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd9a\", \"name\": \"Upgrading or Uninstalling Overops\"},\n                  { \"id\": \"5bbeee6ae658fb000339e3d5\", \"name\": \"Get Started\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd92\", \"name\": \"Get Started\"},\n                  { \"id\": \"5b69a12a98d4d300037af509\", \"name\": \"Integrations to Overops\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd99\", \"name\": \"Integrations to Overops\"},\n                  { \"id\": \"5b69a12a98d4d300037af502\", \"name\": \"General\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd95\", \"name\": \"General\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd9c\", \"name\": \"Security\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd98\", \"name\": \"OverOps Switches\"},\n                  { \"id\": \"5b69a12a98d4d300037af505\", \"name\": \"OverOps Switches\"},\n                  { \"id\": \"5b69a12a98d4d300037af501\", \"name\": \"Whats New\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd94\", \"name\": \"Whats New\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bda1\", \"name\": \"Collector Advanced Settings\"},\n                  { \"id\": \"5b69a12a98d4d300037af50e\", \"name\": \"Collector Advanced Settings\"},\n                  { \"id\": \"5b69a12a98d4d300037af50f\", \"name\": \"Agent Advanced Settings\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bda2\", \"name\": \"Agent Advanced Settings\"},\n                  { \"id\": \"5b69a12a98d4d300037af503\", \"name\": \"Administrative Settings\"},\n                  { \"id\": \"5b86ae6bf96d6b0003c0bd96\", \"name\": \"Administrative Settings\"}\n                ] `;\n                \n\n// create JSON object \ncatjson = JSON.parse(categories);\n\n\n// Delete old indexs based on \"old Version number\"\n// ---------------------------------\n// Make sure to set the version numbers in the configuration.js file !!!!!!!\n// ---------------------------------\n\ndeleteagoliaIndex();\n\n// Add/update current index records\nlistslugsMongodb();\n\n\n\n\n\n\n\n\n\n\nfunction listslugsMongodb() {\n\n  var mongoclient = mongo.MongoClient;\n  var mongoUrl = 'mongodb://localhost:27017/algolia';\n\n  mongoclient.connect(mongoUrl, function(err, db) { \n    if (err) {\n        console.error(\"Mongo error\", err);\n        throw err;\n      }\n\n    var dbo = db.db(\"algolia\");\n\n    dbo.collection(\"slugs\").find().forEach(function(doc) {\n      // do stuff\n\n      //console.log(doc.url);\n      if (doc.hostname == \"doc.overops.com\") {\n         readReadme(doc);\n      }\n\n      }, function(err) {\n\n      //console.log(\"err done in listslugsMongodb\");\n      //console.log(\"Err:\", err); \n        db.close(false, function() {\n\n        console.log(\"Mongo Done\");\n\n\n      });\n\n\n    });\n\n  });\n\n}\n\n\n\n\n\n\nfunction readReadme(doc) {\n\n  var data = JSON.stringify(false);\n  var xhr = new XMLHttpRequest();\n  xhr.withCredentials = true;\n\n  xhr.addEventListener(\"readystatechange\", function () {\n\n    //callback function once completed!\n\n    if (this.readyState === this.DONE) {\n    \n      // Begin accessing JSON data here\n      obj = JSON.parse(this.responseText);\n      //console.log(obj.title);\n\n      //console.log(obj);\n      if ((obj !== null) && (typeof obj._id != 'undefined')) {\n        createAlgoliaIndex(obj, doc, function(err,dataJson) {\n        if (err) {\n          console.log(\"Add Algolia index:\", err);\n          throw err;\n        }\n        //console.log(\"Json:\", dataJson);\n        if (dataJson) {\n          writealgoliaIndex(dataJson, function(err, result) {\n            if (err) {\n              console.log(\"writeIndex error\", err);\n              throw err;\n            }\n            console.log(\"Index added:\", dataJson.title, result);\n          });\n        }\n      });\n      } // obj !== null\n    }  // readystate == done\n  });\n\n  //console.log(\"zenConfig\", zenConfig);\n  //console.log(\"adminkey:\", zenConfig.auth.readmeAdminKey);\n  xhr.open(\"GET\", \"https://dash.readme.io/api/v1/docs/\" + doc.slug);\n  xhr.setRequestHeader(\"x-readme-version\", zenConfig.auth.DocVersion_current);\n  xhr.setRequestHeader(\"Accept\",  \"application/json\");\n  xhr.setRequestHeader(\"Content-Type\", \"application/json\");\n  xhr.setRequestHeader(\"Authorization\", \"Basic \" + zenConfig.auth.readmeAdminKey);\n  xhr.send(data);\n\n}\n\n\n\n\n\n\n  function writealgoliaIndex(mongorecord, callback) {\n    var  algoliaApplicationID = zenConfig.auth.algoliaApplicationID;\n    var  algoliaAdminKey = zenConfig.auth.algoliaAdminKey;\n    var  algoliaIndexName = zenConfig.auth.algoliaIndex;\n    var  algolia = algoliasearch(algoliaApplicationID, algoliaAdminKey);\n    var index = algolia.initIndex(algoliaIndexName);\n\n\n\n        index.saveObject(mongorecord, function(err, content) {\n            if (err) {\n              console.error(err);\n              throw err;\n            }\n\n          //  console.log(\"Index added\", content);\n            return callback(null, content);\n          });\n\n  }\n\n\n\n\n\n\n\nfunction createAlgoliaIndex(zendeskdata, doc , callback) {\n\n  //console.log(\"apiddata\", zendeskdata);\n  try {\n\n    jsonObj = [];\n        page = {}\n\n        page [\"locale\"] = localeJson(zendeskdata.locale);\n        page [\"position\"] = 0;\n        page [\"title\"] = zendeskdata.title;\n        page [\"body_safe\"] = htmlToText.fromString(zendeskdata.body_html, \n          {wordwrap: 130}).substring(0,8000);\n        page [\"outdated\"] = null;\n        page [\"promoted\"] = null;\n        page [\"vote_sum\"] = null;\n        page [\"comment_count\"] = 0;\n        page [\"category\"] = categoryJson(zendeskdata.topic_id);\n        page [\"section\"] = sectionJson(zendeskdata.category);\n        page [\"lable_names\"] = null;\n\n        page [\"_id\"] = zendeskdata._id;\n        page [\"id\"] = zendeskdata._id;\n        page [\"objectID\"] = zendeskdata._id;\n\n\n        page [\"source\"] = \"Documentation\";\n        page [\"version\"] = translateVersion(zendeskdata.version);\n\n        page [\"url\"] = doc.url;\n        page [\"author\"]\n       \n\n        page [\"follower_count\"] \n        page [\"hidden\"] = zendeskdata.hidden;\n        page [\"parentDoc\"] = zendeskdata.parentDoc;\n\n        page [\"created_at_iso\"] = zendeskdata.createdAt;\n        page [\"updated_at_iso\"] = null\n        page [\"edited_at_iso\"] = null\n        page [\"slug\"] = zendeskdata.id;\n       \n       \n\n        var regex2 = /((https:\\/\\/files.readme.io)[-a-zA-Z0-9:@;?&=\\/%\\+\\.\\*!'\\(\\),\\$_\\{\\}\\^~\\[`#|]+)/\n        var datatosearch = htmlToText.fromString(zendeskdata.body_html, \n          {wordwrap: 130}).substring(0,9000);\n    \n        var regexresult2 = datatosearch.match(regex2);\n        if (regexresult2 != null) {\n          var myimage = regexresult2[0];\n        page [\"image\"] = myimage;\n\n        }  \n\n\n     }\n     catch(error) {\n      return callback(error);\n     }\n\n        return callback(null, page);\n}\n\n\n\n\n\n\nfunction categoryJson(sec_id) {\n \n  var category = {}  // empty object\n  category [\"id\"] = 2;\n  category [\"title\"] = \"Documentation\";\n\n  return  category;\n}\n\n\n\nfunction sectionJson(sec_id) {\n\n\n  //console.log(\"Section-ID\", sec_id);\n  var section = {}  // empty object\n  section [\"id\"] = sec_id;\n  section [\"title\"] = translateCategory(sec_id);\n  section [\"full_path\"]\n  section [\"user_segment\"]\n  //console.log(\"section\", section);\n  return  section;\n}\n\n\nfunction translateCategory(id) {\n\nvar categoryobj =  jsonQuery('[id=' + id + ']', {\n              data: catjson\n              });\n\n//console.log(\"categoryobj: \", categoryobj.value);\nif (categoryobj.value == null) {\n    return id;\n  } else {\n    return categoryobj.value.name;\n  }\n}\n\nfunction translateVersion(id) {\n\nif (id == '5b69a12a98d4d300037af5fd') {\n        return 4.16;\n    } else if (id == '5b86ae6bf96d6b0003c0be97') {\n        return 4.17; \n    } else if (id == '5bbeee6ae658fb000339e4ec') {\n        return 4.19;\n    } else {\n        return id;\n    }\n}\n\n\nfunction localeJson(varlocale) {\n\n  \n  var locale = {}  // empty object\n  locale [\"locale\"] = \"en-us\";\n  locale [\"name\"] = 'English';\n  locale [\"rtl\"] = false;\n  \n  return  locale;\n}\n\n\n\n\n\n\n\n\n\n\n\n  function deleteagoliaIndex() {\n    var  algoliaApplicationID = zenConfig.auth.algoliaApplicationID;\n    var  algoliaAdminKey = zenConfig.auth.algoliaAdminKey;\n    var  algoliaIndexName = zenConfig.auth.algoliaIndex;\n    var  algolia = algoliasearch(algoliaApplicationID, algoliaAdminKey);\n    var index = algolia.initIndex(algoliaIndexName);\n\n\n\n        index.deleteBy( { filters: 'version:' + zenConfig.auth.DocVersion_old.substring(1,5) }, function(err, content) {\n            \n            if (err) {\n              console.error(err);\n              throw err;\n            }\n\n            console.log(\"Indexes deleted\", content);\n         \n          });\n  }\n\n\n\n\n\n\n",
 			"file": "algolia-crawler/populate_documentation_algolia_index.js",
+			"file_size": 10570,
+			"file_write_time": 131844333468925687,
 			"settings":
 			{
-				"buffer_size": 10345,
+				"buffer_size": 10570,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "algolia-crawler/configuration.js",
+			"settings":
+			{
+				"buffer_size": 442,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -398,7 +410,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -428,7 +440,7 @@
 						"translation.y": 2922.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -455,10 +467,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 479.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -488,7 +500,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -497,15 +509,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3135,
+						"buffer_size": 3137,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								626,
-								626
+								622,
+								622
 							]
 						],
 						"settings":
@@ -515,10 +527,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 10.0,
+						"translation.y": 2.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -527,15 +539,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10345,
+						"buffer_size": 10570,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10290,
-								10290
+								2206,
+								2206
 							]
 						],
 						"settings":
@@ -545,10 +557,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4461.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "algolia-crawler/configuration.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 442,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								364,
+								308
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
