@@ -8,43 +8,41 @@ var jsonQuery = require('json-query');
 
 
 var categories =  `[ 
-                  { "id": "5b69a12a98d4d300037af4fe", "name": "SaaS Deployment" } ,
+                  { "id": "5be44400a1f75800379bf284", "name": "SaaS Deployment" } ,
                   { "id": "5b86ae6bf96d6b0003c0bd91", "name": "SaaS Deployment" } , 
-                  { "id": "5b69a12a98d4d300037af50c", "name": "Attaching the Micro-Agent" },
+                  { "id": "5be44400a1f75800379bf292", "name": "Attaching the Micro-Agent" },
                   { "id": "5b86ae6bf96d6b0003c0bd9f", "name": "Attaching the Micro-Agent" }, 
-                  { "id": "5b69a12a98d4d300037af50b", "name": "On-Premises Deployment" },
+                  { "id": "5be44400a1f75800379bf291", "name": "On-Premises Deployment" },
                   { "id": "5b86ae6bf96d6b0003c0bd9e", "name": "On-Premises Deployment" },
-                  { "id": "5b69a12a98d4d300037af508", "name": "Hybrid Deployment"},
+                  { "id": "5be44400a1f75800379bf28e", "name": "Hybrid Deployment"},
                   { "id": "5b86ae6bf96d6b0003c0bd9b", "name": "Hybrid Deployment"},
-                  { "id": "5b69a12a98d4d300037af50d", "name": "Reporting and Publishing Metrics"},
+                  { "id": "5be44400a1f75800379bf293", "name": "Reporting and Publishing Metrics"},
                   { "id": "5b86ae6bf96d6b0003c0bda0", "name": "Reporting and Publishing Metrics"},
-                  { "id": "5b69a12a98d4d300037af504", "name": "The Dashboard"},
+                  { "id": "5be44400a1f75800379bf28a", "name": "The Dashboard"},
                   { "id": "5b86ae6bf96d6b0003c0bd97", "name": "The Dashboard"},
-                  { "id": "5b86ae6bf96d6b0003c0bd93", "name": "Resolving Error"},
+                  { "id": "5be44400a1f75800379bf286", "name": "Resolving Error"},
                   { "id": "5b69a12a98d4d300037af500", "name": "Resolving Error"},
-                  { "id": "5b69a12a98d4d300037af511", "name": "Video Tutorials"},
+                  { "id": "5be44400a1f75800379bf297", "name": "Video Tutorials"},
                   { "id": "5b86ae6bf96d6b0003c0bda4", "name": "Video Tutorials"},
-                  { "id": "5b69a12a98d4d300037af506", "name": "Integrations to Overops"},
-                  { "id": "5b69a12a98d4d300037af50a", "name": "Before Installing Overops"},
+                  { "id": "5be44400a1f75800379bf28c", "name": "Integrations to Overops"},
+                  { "id": "5be44400a1f75800379bf290", "name": "Before Installing Overops"},
                   { "id": "5b86ae6bf96d6b0003c0bd9d", "name": "Before Installing Overops"},
-                  { "id": "5b69a12a98d4d300037af507", "name": "Upgrading or Uninstalling Overops"},
+                  { "id": "5be44400a1f75800379bf28d", "name": "Upgrading or Uninstalling Overops"},
                   { "id": "5b86ae6bf96d6b0003c0bd9a", "name": "Upgrading or Uninstalling Overops"},
-                  { "id": "5b69a12a98d4d300037af4ff", "name": "Get Started"},
+                  { "id": "5be44400a1f75800379bf285", "name": "Get Started"},
                   { "id": "5b86ae6bf96d6b0003c0bd92", "name": "Get Started"},
-                  { "id": "5b69a12a98d4d300037af509", "name": "Integrations to Overops"},
-                  { "id": "5b86ae6bf96d6b0003c0bd99", "name": "Integrations to Overops"},
-                  { "id": "5b69a12a98d4d300037af502", "name": "General"},
+                  { "id": "5be44400a1f75800379bf288", "name": "General"},
                   { "id": "5b86ae6bf96d6b0003c0bd95", "name": "General"},
-                  { "id": "5b86ae6bf96d6b0003c0bd9c", "name": "Security"},
-                  { "id": "5b86ae6bf96d6b0003c0bd98", "name": "OverOps Switches"},
+                  { "id": "5be44400a1f75800379bf28f", "name": "Security"},
+                  { "id": "5be44400a1f75800379bf28b", "name": "OverOps Switches"},
                   { "id": "5b69a12a98d4d300037af505", "name": "OverOps Switches"},
-                  { "id": "5b69a12a98d4d300037af501", "name": "Whats New"},
+                  { "id": "5be44400a1f75800379bf287", "name": "Whats New"},
                   { "id": "5b86ae6bf96d6b0003c0bd94", "name": "Whats New"},
-                  { "id": "5b86ae6bf96d6b0003c0bda1", "name": "Collector Advanced Settings"},
+                  { "id": "5be44400a1f75800379bf294", "name": "Collector Advanced Settings"},
                   { "id": "5b69a12a98d4d300037af50e", "name": "Collector Advanced Settings"},
-                  { "id": "5b69a12a98d4d300037af50f", "name": "Agent Advanced Settings"},
+                  { "id": "5be44400a1f75800379bf295", "name": "Agent Advanced Settings"},
                   { "id": "5b86ae6bf96d6b0003c0bda2", "name": "Agent Advanced Settings"},
-                  { "id": "5b69a12a98d4d300037af503", "name": "Administrative Settings"},
+                  { "id": "5be44400a1f75800379bf289", "name": "Administrative Settings"},
                   { "id": "5b86ae6bf96d6b0003c0bd96", "name": "Administrative Settings"}
                 ] `;
                 
@@ -54,6 +52,10 @@ catjson = JSON.parse(categories);
 
 
 // Delete old indexs based on "old Version number"
+// ---------------------------------
+// Make sure to set the version numbers in the configuration.js file !!!!!!!
+// ---------------------------------
+
 deleteagoliaIndex();
 
 // Add/update current index records
@@ -306,7 +308,9 @@ function translateVersion(id) {
 if (id == '5b69a12a98d4d300037af5fd') {
         return 4.16;
     } else if (id == '5b86ae6bf96d6b0003c0be97') {
-        return 4.17;
+        return 4.17; 
+    } else if (id == '5bbeee6ae658fb000339e4ec') {
+        return 4.19;
     } else {
         return id;
     }
