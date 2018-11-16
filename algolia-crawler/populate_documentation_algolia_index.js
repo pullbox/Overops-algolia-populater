@@ -311,6 +311,8 @@ if (id == '5b69a12a98d4d300037af5fd') {
         return 4.17; 
     } else if (id == '5bbeee6ae658fb000339e4ec') {
         return 4.19;
+    } else if (id == '5be44400a1f75800379bf3a6') {
+        return 4.22;
     } else {
         return id;
     }
