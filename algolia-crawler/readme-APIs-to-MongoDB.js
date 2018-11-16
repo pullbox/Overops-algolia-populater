@@ -2,7 +2,7 @@ var mongo = require('mongodb');
 const HCCrawler = require('headless-chrome-crawler');
 
 
- //deletelugsMongodb();
+ deletelugsMongodb();
 
 (async () => {
   const crawler = await HCCrawler.launch({
@@ -20,7 +20,7 @@ const HCCrawler = require('headless-chrome-crawler');
         var hostname = (new URL(item)).hostname;
      
         if (hostname == "doc.overops.com") {
-          writetoMongodb(item,hostname,slug);  
+  //        writetoMongodb(item,hostname,slug);  
         }
         console.log("done");
       })
