@@ -7,52 +7,53 @@ var jsonQuery = require('json-query');
 
 
 var categories = `[ 
-                  { "id": "5c45cf5372c8701449bd958a", "name": "SaaS Deployment" } ,
+                  { "id": "5cab5e89c994f6005041104a", "name": "SaaS Deployment" } ,
                   { "id": "5c879d6a2b0dbc00203fc180", "name": "SaaS Deployment" } , 
-                  { "id": "5c45cf5372c8701449bd9598", "name": "Attaching the Micro-Agent" },
+                  { "id": "5cab5e89c994f60050411058", "name": "Attaching the Micro-Agent" },
                   { "id": "5c879d6a2b0dbc00203fc18e", "name": "Attaching the Micro-Agent" }, 
-                  { "id": "5c45cf5372c8701449bd9597", "name": "On-Premises Deployment" },
+                  { "id": "5cab5e89c994f60050411057", "name": "On-Premises Deployment" },
                   { "id": "5c879d6a2b0dbc00203fc18d", "name": "On-Premises Deployment" },
-                  { "id": "5c45cf5372c8701449bd9594", "name": "Hybrid Deployment"},
+                  { "id": "5cab5e89c994f60050411054", "name": "Hybrid Deployment"},
                   { "id": "5c879d6a2b0dbc00203fc18a", "name": "Hybrid Deployment"},
-                  { "id": "5c45cf5372c8701449bd9599", "name": "Reporting and Publishing Metrics"},
+                  { "id": "5cab5e89c994f60050411059", "name": "Reporting and Publishing Metrics"},
                   { "id": "5c879d6a2b0dbc00203fc18f", "name": "Reporting and Publishing Metrics"},
-                  { "id": "5c45cf5372c8701449bd9590", "name": "The Dashboard"},
+                  { "id": "5cab5e89c994f60050411050", "name": "The Dashboard"},
                   { "id": "5c879d6a2b0dbc00203fc186", "name": "The Dashboard"},
-                  { "id": "5c45cf5372c8701449bd958c", "name": "Resolving Error"},
+                  { "id": "5cab5e89c994f6005041104c", "name": "Resolving Error"},
                   { "id": "5c879d6a2b0dbc00203fc182", "name": "Resolving Error"},
-                  { "id": "5c45cf5372c8701449bd959d", "name": "Video Tutorials"},
+                  { "id": "5cab5e89c994f6005041105d", "name": "Video Tutorials"},
                   { "id": "5c879d6a2b0dbc00203fc193", "name": "Video Tutorials"},
-                  { "id": "5c879d6a2b0dbc00203fc188", "name": "Integrations to Overops"},
+                  { "id": "5cab5e89c994f60050411052", "name": "Integrations to Overops"},
                   { "id": "5c45cf5372c8701449bd9592", "name": "Integrations to Overops"},
-                  { "id": "5c45cf5372c8701449bd9596", "name": "Before Installing Overops"},
+                  { "id": "5cab5e89c994f60050411056", "name": "Before Installing Overops"},
                   { "id": "5c879d6a2b0dbc00203fc18c", "name": "Before Installing Overops"},
-                  { "id": "5c45cf5372c8701449bd9593", "name": "Upgrading or Uninstalling Overops"},
+                  { "id": "5cab5e89c994f60050411053", "name": "Upgrading or Uninstalling Overops"},
                   { "id": "5c879d6a2b0dbc00203fc189", "name": "Upgrading or Uninstalling Overops"},
-                  { "id": "5c45cf5372c8701449bd958b", "name": "Get Started"},
+                  { "id": "5cab5e89c994f6005041104b", "name": "Get Started"},
                   { "id": "5c879d6a2b0dbc00203fc181", "name": "Get Started"},
-                  { "id": "5c45cf5372c8701449bd958e", "name": "General"},
+                  { "id": "5cab5e89c994f6005041104e", "name": "General"},
                   { "id": "5c879d6a2b0dbc00203fc184", "name": "General"},
-                  { "id": "5c45cf5372c8701449bd9595", "name": "Security"},
+                  { "id": "5cab5e89c994f60050411055", "name": "Security"},
                   { "id": "5c879d6a2b0dbc00203fc18b", "name": "Security"},
-                  { "id": "5c45cf5372c8701449bd9591", "name": "OverOps Switches"},
+                  { "id": "5cab5e89c994f60050411051", "name": "OverOps Switches"},
                   { "id": "5c879d6a2b0dbc00203fc187", "name": "OverOps Switches"},
-                  { "id": "5c45cf5372c8701449bd958d", "name": "Whats New"},
+                  { "id": "5cab5e89c994f6005041104d", "name": "Whats New"},
                   { "id": "5c879d6a2b0dbc00203fc183", "name": "Whats New"},
-                  { "id": "5c45cf5372c8701449bd959a", "name": "Collector Advanced Settings"},
+                  { "id": "5cab5e89c994f6005041105a", "name": "Collector Advanced Settings"},
                   { "id": "5c879d6a2b0dbc00203fc190", "name": "Collector Advanced Settings"},
-                  { "id": "5c45cf5372c8701449bd959b", "name": "Agent Advanced Settings"},
+                  { "id": "5cab5e89c994f6005041105b", "name": "Agent Advanced Settings"},
                   { "id": "5c879d6a2b0dbc00203fc191", "name": "Agent Advanced Settings"},
-                  { "id": "5c879d6a2b0dbc00203fc195", "name": "Build Tools"},  
+                  { "id": "5cab5e89c994f6005041105f", "name": "Build Tools"},  
                   { "id": "5c879d6a2b0dbc00203fc195", "name": "Build Tools"},    
-                  { "id": "5c879d6a2b0dbc00203fc196", "name": "Deployment Automation"},  
+                  { "id": "5cab5e89c994f60050411060", "name": "Deployment Automation"},  
                   { "id": "5c45cf5372c8701449bd95a0", "name": "Deployment Automation"},                  
-                  { "id": "5c879d6a2b0dbc00203fc197", "name": "Reliability Dashboard"},
+                  { "id": "5cab5e89c994f60050411061", "name": "Reliability Dashboard"},
                   { "id": "5c45cf5372c8701449bd95a1", "name": "Reliability Dashboard"},
-                  { "id": "5c879d6a2b0dbc00203fc198", "name": "Installation Links (Site Map)"},
+                  { "id": "5cab5e89c994f60050411062", "name": "Installation Links (Site Map)"},
                   { "id": "5c45cf5372c8701449bd95a2", "name": "Installation Links (Site Map)"},
-                  { "id": "5c45cf5372c8701449bd958f", "name": "Administrative Settings"},
-                  { "id": "5c879d6a2b0dbc00203fc185", "name": "Administrative Settings"}
+                  { "id": "5cab5e89c994f6005041104f", "name": "Administrative Settings"},
+                  { "id": "5c879d6a2b0dbc00203fc185", "name": "Administrative Settings"},
+                  { "id": "5cab5e89c994f60050411063", "name": "Installation Portal"}
                 ] `;
 
 
@@ -330,6 +331,9 @@ function translateVersion(id) {
         return version;
     } else if (id == '5c879d6a2b0dbc00203fc2e4') {
         version = "4.32";
+        return version;
+    } else if (id == '5cab5e89c994f600504111b5') {
+        version = "4.34";
         return version;
     } else {
 
