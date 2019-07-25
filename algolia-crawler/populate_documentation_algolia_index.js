@@ -5,57 +5,57 @@ var htmlToText = require('html-to-text');
 var zenConfig = require('./configuration');
 var jsonQuery = require('json-query');
 
-//1st
+//2nd
 var categories = `[ 
                   { "id": "5ccfe882bdd50b0014f9a214", "name": "SaaS Deployment" } ,
-                  { "id": "5c879d6a2b0dbc00203fc180", "name": "SaaS Deployment" } , 
+                  { "id": "5d384352d4c29e02e0245a68", "name": "SaaS Deployment" } , 
                   { "id": "5ccfe882bdd50b0014f9a222", "name": "Attaching the Micro-Agent" },
-                  { "id": "5c879d6a2b0dbc00203fc18e", "name": "Attaching the Micro-Agent" }, 
+                  { "id": "5d384352d4c29e02e0245a76", "name": "Attaching the Micro-Agent" }, 
                   { "id": "5ccfe882bdd50b0014f9a221", "name": "On-Premises Deployment" },
-                  { "id": "5c879d6a2b0dbc00203fc18d", "name": "On-Premises Deployment" },
+                  { "id": "5d384352d4c29e02e0245a75", "name": "On-Premises Deployment" },
                   { "id": "5ccfe882bdd50b0014f9a21e", "name": "Hybrid Deployment"},
-                  { "id": "5c879d6a2b0dbc00203fc18a", "name": "Hybrid Deployment"},
+                  { "id": "5d384352d4c29e02e0245a72", "name": "Hybrid Deployment"},
                   { "id": "5ccfe882bdd50b0014f9a223", "name": "Reporting and Publishing Metrics"},
-                  { "id": "5c879d6a2b0dbc00203fc18f", "name": "Reporting and Publishing Metrics"},
+                  { "id": "5d384352d4c29e02e0245a77", "name": "Reporting and Publishing Metrics"},
                   { "id": "5ccfe882bdd50b0014f9a21a", "name": "The Dashboard"},
-                  { "id": "5c879d6a2b0dbc00203fc186", "name": "The Dashboard"},
+                  { "id": "5d384352d4c29e02e0245a6e", "name": "The Dashboard"},
                   { "id": "5ccfe882bdd50b0014f9a216", "name": "Resolving Error"},
-                  { "id": "5c879d6a2b0dbc00203fc182", "name": "Resolving Error"},
+                  { "id": "5d384352d4c29e02e0245a6a", "name": "Resolving Error"},
                   { "id": "5ccfe882bdd50b0014f9a227", "name": "Video Tutorials"},
-                  { "id": "5c879d6a2b0dbc00203fc193", "name": "Video Tutorials"},
+                  { "id": "5d384352d4c29e02e0245a7b", "name": "Video Tutorials"},
                   { "id": "5ccfe882bdd50b0014f9a21c", "name": "Integrations to Overops"},
-                  { "id": "5c45cf5372c8701449bd9592", "name": "Integrations to Overops"},
+                  { "id": "5d384352d4c29e02e0245a70", "name": "Integrations to Overops"},
                   { "id": "5ccfe882bdd50b0014f9a220", "name": "Before Installing Overops"},
-                  { "id": "5c879d6a2b0dbc00203fc18c", "name": "Before Installing Overops"},
+                  { "id": "5d384352d4c29e02e0245a74", "name": "Before Installing Overops"},
                   { "id": "5ccfe882bdd50b0014f9a21d", "name": "Upgrading or Uninstalling Overops"},
-                  { "id": "5c879d6a2b0dbc00203fc189", "name": "Upgrading or Uninstalling Overops"},
+                  { "id": "5d384352d4c29e02e0245a71", "name": "Upgrading or Uninstalling Overops"},
                   { "id": "5ccfe882bdd50b0014f9a215", "name": "Get Started"},
-                  { "id": "5c879d6a2b0dbc00203fc181", "name": "Get Started"},
+                  { "id": "5d384352d4c29e02e0245a69", "name": "Get Started"},
                   { "id": "5ccfe882bdd50b0014f9a218", "name": "General"},
-                  { "id": "5c879d6a2b0dbc00203fc184", "name": "General"},
+                  { "id": "5d384352d4c29e02e0245a6c", "name": "General"},
                   { "id": "5ccfe882bdd50b0014f9a21f", "name": "Security"},
-                  { "id": "5c879d6a2b0dbc00203fc18b", "name": "Security"},
+                  { "id": "5d384352d4c29e02e0245a73", "name": "Security"},
                   { "id": "5ccfe882bdd50b0014f9a21b", "name": "OverOps Switches"},
-                  { "id": "5c879d6a2b0dbc00203fc187", "name": "OverOps Switches"},
+                  { "id": "5d384352d4c29e02e0245a6f", "name": "OverOps Switches"},
                   { "id": "5ccfe882bdd50b0014f9a217", "name": "Whats New"},
-                  { "id": "5c879d6a2b0dbc00203fc183", "name": "Whats New"},
+                  { "id": "5d384352d4c29e02e0245a6b", "name": "Whats New"},
                   { "id": "5ccfe882bdd50b0014f9a224", "name": "Collector Advanced Settings"},
-                  { "id": "5c879d6a2b0dbc00203fc190", "name": "Collector Advanced Settings"},
+                  { "id": "5d384352d4c29e02e0245a78", "name": "Collector Advanced Settings"},
                   { "id": "5ccfe882bdd50b0014f9a225", "name": "Agent Advanced Settings"},
-                  { "id": "5c879d6a2b0dbc00203fc191", "name": "Agent Advanced Settings"},
+                  { "id": "5d384352d4c29e02e0245a79", "name": "Agent Advanced Settings"},
                   { "id": "5ccfe882bdd50b0014f9a229", "name": "Build Tools"},  
-                  { "id": "5c879d6a2b0dbc00203fc195", "name": "Build Tools"},    
+                  { "id": "5d384352d4c29e02e0245a7c", "name": "Build Tools"},    
                   { "id": "5ccfe882bdd50b0014f9a22a", "name": "Deployment Automation"},  
-                  { "id": "5c45cf5372c8701449bd95a0", "name": "Deployment Automation"},                  
+                  { "id": "5d384352d4c29e02e0245a7d", "name": "Deployment Automation"},                  
                   { "id": "5ccfe882bdd50b0014f9a22b", "name": "Reliability Dashboard"},
-                  { "id": "5c45cf5372c8701449bd95a1", "name": "Reliability Dashboard"},
+                  { "id": "5d384352d4c29e02e0245a7e", "name": "Reliability Dashboard"},
                   { "id": "5ccfe882bdd50b0014f9a22c", "name": "Installation Links (Site Map)"},
-                  { "id": "5c45cf5372c8701449bd95a2", "name": "Installation Links (Site Map)"},
+                  { "id": "5d384352d4c29e02e0245a7f", "name": "Installation Links (Site Map)"},
                   { "id": "5ccfe882bdd50b0014f9a219", "name": "Administrative Settings"},
-                  { "id": "5c879d6a2b0dbc00203fc185", "name": "Administrative Settings"},
-                  { "id": "5ccfe882bdd50b0014f9a22d", "name": "Installation Portal"},
-                  { "id": "5ccfe882bdd50b0014f9a22f", "name": "Advanced Configuration - Beta"},
-                  { "id": "5ccfe882bdd50b0014f9a22e", "name": ".net Installation - Beta"}
+                  { "id": "5d384352d4c29e02e0245a6d", "name": "Administrative Settings"},
+                  { "id": "5d384352d4c29e02e0245a80", "name": "Installation Portal"},
+                  { "id": "5d384352d4c29e02e0245a82", "name": "Advanced Configuration - Beta"},
+                  { "id": "5d384352d4c29e02e0245a81", "name": ".net Installation - Beta"}
                 ] `;
 
 
@@ -339,6 +339,9 @@ function translateVersion(id) {
         return version;
     } else if (id == '5ccfe882bdd50b0014f9a394') {
         version = "4.37";
+        return version;
+    } else if (id == '5d384352d4c29e02e0245c0b') {
+        version = "4.41";
         return version;
     } else {
 
