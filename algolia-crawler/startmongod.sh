@@ -2,3 +2,4 @@
 --fork \
 --logpath \
 mongodb.log
+
