@@ -224,9 +224,6 @@ function createStdCategoryJson(jsonCategory, callback) {
 
 
 function writealgoliaIndex(mongorecord, callback) {
-    //var  algoliaApplicationID = 'HI7RLPJPBN';
-    //var  algoliaAdminKey = 'efb31d83596571adcb98aea8cf3c2fed';
-    //var  algoliaIndexName = 'Documentation';
     var algoliaApplicationID = zenConfig.auth.algoliaApplicationID;
     var algoliaAdminKey = zenConfig.auth.algoliaAdminKey;
     var algoliaIndexName = zenConfig.auth.algoliaIndex;
