@@ -27,8 +27,8 @@ console.log("done-done");
 function getArticles() {
 
     var community = zendesk.createClient({
-        username: 'daniel.bechtel@overops.com',
-        token: 'Qq1rb4fTmeLmoO7TlkqHYptH56uMnYWi4wEYulgV',
+        username: zenConfig.auth.username,
+        token: zenConfig.auth.token,
         remoteUri: 'https://takipi.zendesk.com/api/v2/help_center',
         debug: false,
         helpcenter: true
@@ -75,8 +75,8 @@ function getArticles() {
 function getSections() {
 
     var community = zendesk.createClient({
-        username: 'daniel.bechtel@overops.com',
-        token: 'Qq1rb4fTmeLmoO7TlkqHYptH56uMnYWi4wEYulgV',
+        username: zenConfig.auth.username,
+        token: zenConfig.auth.token,
         remoteUri: 'https://takipi.zendesk.com/api/v2/help_center',
         debug: false,
         helpcenter: true
@@ -143,8 +143,8 @@ function createStdSectionJson(jsonSections, callback) {
 function getCategories() {
 
     var community = zendesk.createClient({
-        username: 'daniel.bechtel@overops.com',
-        token: 'Qq1rb4fTmeLmoO7TlkqHYptH56uMnYWi4wEYulgV',
+        username: zenConfig.auth.username,
+        token: zenConfig.auth.token,
         remoteUri: 'https://takipi.zendesk.com/api/v2/help_center',
         debug: false,
         helpcenter: true
