@@ -8,3 +8,4 @@ server.js
 /algolia-crawler/archive
 configuration.js
 Algolia-pop*
+/algolia-crawler-convert/

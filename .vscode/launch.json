@@ -7,8 +7,61 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/algolia-crawler/readme_get_document_category.js"
-        }
+            "name": "Launch MongoreadID.js",
+            "program": "${workspaceFolder}/algolia-crawler/Test/MongotestreadID.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test Init_categories to Mongodb.js",
+            "program": "${workspaceFolder}/algolia-crawler/util/init_categories_to_MongoDB.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test ReadmeTest.js",
+            "program": "${workspaceFolder}/algolia-crawler/Test/ReadmeTest.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+
+ 
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Test getCategoryfromSlugs.test.js",
+            "program": "${workspaceFolder}/algolia-crawler/Test/getCategoryfromSlugs.test.js --detectOpenHandles"
+        }, 
+
+        {"type": "node",
+        "request": "launch",
+        "name": "Jest Tests",
+        "program": "${workspaceroot//node_modules//jest//bin//jest.js --detectOpenHandles",
+        "args" : [
+            "-i"
+        ]
+
+    },
+
+        {
+            "name": "Debug Jest Tests",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": [
+              "--inspect-brk",
+              "${workspaceFolder}//node_modules//.bin//jest",
+              "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "port": 9229
+          }
     ]
 }
