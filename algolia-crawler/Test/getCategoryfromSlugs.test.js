@@ -33,23 +33,23 @@ describe('Test Class getCategoryfromSlugs', function() {
             console.log(Slug);
         });
 
-        test('slug object was created', function() {
-            expect(slug).toBeInstanceOf(Object);
-        });
-
     });
 
 
     describe('Test readmeAPI.js', function() {
 
         test('Read compatibilty slug from doc ', async() => {
-            const actual = await docs.getreadMe("docs", category_slug);
-            expect(actual.slug).toBe("compatibility");
+            const actual = docs.getreadMe("docs", category_slug)
+                .then((actual) => {
+                    expect(actual.data.slug).toBe("compatibility");
+                });
+
         });
 
         test('Extract "Category" from response', async() => {
-            const actual = await data.getPageData(slug);
-            expect(actual.category).not.toBeNull();
+            const actual =  await docs.getreadMe("categories", category_slug);
+            expect(actual.data).toBe(category_slug);
+
         });
 
         //   test('Read Categories from Mongo', async()  => {
@@ -73,26 +73,6 @@ describe('Test Class getCategoryfromSlugs', function() {
                 });
         });
     });
-
-
-
-
-
-    describe('Test readmeAPI', function() {
-
-        test('Read document "compatibility"', () => {
-            docs.getreadMe("categories", category_slug)
-                .then((result) => {
-                    expect(response.data.category).not.toBeNull();
-                });
-        });
-
-    });
-
-
-
-
-
 
 
 });
