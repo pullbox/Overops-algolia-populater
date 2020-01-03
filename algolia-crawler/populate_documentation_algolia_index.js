@@ -76,8 +76,8 @@ async function processslug(slug, index) {
 async function writeAlgoliaIndex(algoliarecord) {
     var algoliaApplicationID = zenConfig.auth.algoliaApplicationID;
     var algoliaAdminKey = zenConfig.auth.algoliaAdminKey;
-    // var algoliaIndexName = zenConfig.auth.algoliaIndex;
-    var algoliaIndexName = "test"
+    var algoliaIndexName = zenConfig.auth.algoliaIndex;
+    //var algoliaIndexName = "test"
     var algolia = algoliasearch(algoliaApplicationID, algoliaAdminKey);
     var index = algolia.initIndex(algoliaIndexName);
     try {
@@ -202,12 +202,12 @@ async function deleteagoliaIndex() {
     return new Promise((resolve, reject) => {
         var algoliaApplicationID = zenConfig.auth.algoliaApplicationID;
         var algoliaAdminKey = zenConfig.auth.algoliaAdminKey;
-        var algoliaIndexName = "test"
-            //var algoliaIndexName = zenConfig.auth.algoliaIndex;
+        //var algoliaIndexName = "test"
+        var algoliaIndexName = zenConfig.auth.algoliaIndex;
         var algolia = algoliasearch(algoliaApplicationID, algoliaAdminKey);
         var index = algolia.initIndex(algoliaIndexName);
 
-        index.deleteBy({ filters: 'version:' + zenConfig.auth.DocVersion_current.substring(1, 5) }, function(err, content) {
+        index.deleteBy({ filters: 'version:' + zenConfig.auth.DocVersion_old.substring(1, 5) }, function(err, content) {
             (err) ? reject(err): resolve(("Indexes deleted", content));
         });
     })
