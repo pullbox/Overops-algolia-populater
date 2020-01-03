@@ -4,12 +4,12 @@ module.exports = {
      * 
      */
 
-    getVersions: (client) => (
+    getSlugs: (client, slug) => (
         new Promise((resolve, reject) => {
 
             client
                 .db('algolia')
-                .collection('versions')
+                .collection('slugs')
                 .find()
                 .toArray((err, data) => {
                     (err || data.length === 0) ?
@@ -18,15 +18,34 @@ module.exports = {
         })
     ),
 
-
-    getVersionsbyID: (client, Id) => (
+    getSlugbySlug: (client, slug) => (
         new Promise((resolve, reject) => {
 
             client
                 .db('algolia')
-                .collection('versions')
+                .collection('slugs')
                 .find({
-                    _id: Id
+                    slug: slug
+                })
+               
+                .limit(1)
+                .toArray((err, data) => {
+                    (err || data.length === 0) ?
+                    resolve({ error: 'no data' }): resolve(data[0]);
+                });
+        })
+    ),
+
+
+
+    getSlugbyID: (client, Id ) => (
+        new Promise((resolve, reject) => {
+
+            client
+                .db('algolia')
+                .collection('slugs')
+                .find({
+                    id: Id
                 })
                 // .project({
                 //   first_name: 1,
@@ -44,16 +63,16 @@ module.exports = {
     ),
 
 
-    updateVersions: (client, version) => (
+    updateSlug: (client, category) => (
         new Promise((resolve, reject) => {
 
             client
                 .db('algolia')
-                .collection('versions')
+                .collection('slugs')
                 .updateOne({
-                        version: version.version
+                        slug: category.slug
                     }, {
-                        $set: versionJson(version)
+                        $set: slugJson(category)
                     }, {
                         upsert: true
                     },
@@ -69,18 +88,46 @@ module.exports = {
                 )
         })),
 
-    deleteVersions: (client) => (
+    updateSlugId: (client, category) => (
+        new Promise((resolve, reject) => {
+
+            client
+                .db('algolia')
+                .collection('slugs')
+                .updateOne({
+                        slug: category.slug
+                    }, {
+                        $set: { "id": category.id }
+                    }, {
+                        upsert: true
+                    },
+                    function(err, data) {
+                        // console.log("data: ", data);
+                        // assert.equal(null, err);
+                        if (err) {
+                            console.log("UpdateError: ", err);
+                            reject(err);
+                        }
+                        resolve(data);
+                    }
+                )
+        })),
+
+
+
+
+    deleteSlugs: (client) => (
         new Promise((resolve, reject) => {
             client
                 .db('algolia')
-                .collection('versions')
+                .collection('slugs')
                 .drop(function(err, delOK) {
                     if (err) {
                         console.log("Error: ", err);
-                        resolve("Versions does not exist!")
+                        resolve("Collection Slugs does not exist!")
                     }
                     if (delOK) {
-                        console.log("Versions deleted!");
+                        console.log("Collection Slugs deleted!");
                         resolve(delOK);
                     }
                 })
@@ -91,18 +138,3 @@ module.exports = {
 
 }
 
-
-function versionJson(version) {
-
-
-    versionjson = {}
-    versionjson["_id"] = version._id;
-    versionjson["is_deprectated"] = version.is_deprecated;
-    versionjson["is_hidden"] = version.is_hidden;
-    versionjson["is_beta"] = version.is_beta;
-    versionjson["is_stable"] = version.is_stable;
-    versionjson["codename"] = version.codename;
-    versionjson["version"] = version.version;
-
-    return versionjson;
-}

@@ -26,7 +26,7 @@ module.exports = class readmeAPI {
 
         try {
             let url = 'https://dash.readme.io/api/v1/' + type + "/" + slug;
-            const response =  await axios.get(url, headeroption);
+            const response = await axios.get(url, headeroption);
             return response;
         } catch (error) {
             // Error 😨
@@ -35,9 +35,11 @@ module.exports = class readmeAPI {
                  * The request was made and the server responded with a
                  * status code that falls out of the range of 2xx
                  */
-                console.log(error.response.data);
+                // console.log(error.response.data);
+                console.log("Type: " +  type + " Slug:  " + slug)
                 console.log(error.response.status);
-                console.log(error.response.headers);
+                console.log(error.response.message)
+                    // console.log(error.response.headers);
             } else if (error.request) {
                 /*
                  * The request was made but no response was received, `error.request`
@@ -61,9 +63,9 @@ module.exports = class readmeAPI {
     }
 
 
-/* ----------------------------------------- */
-// Get Version
-/* ----------------------------------------- */
+    /* ----------------------------------------- */
+    // Get Version
+    /* ----------------------------------------- */
 
 
 
@@ -88,7 +90,7 @@ module.exports = class readmeAPI {
 
         try {
             let url = 'https://dash.readme.io/api/v1/version';
-            const response =  await axios.get(url, headeroption);
+            const response = await axios.get(url, headeroption);
             return response;
         } catch (error) {
             // Error 😨
@@ -97,21 +99,22 @@ module.exports = class readmeAPI {
                  * The request was made and the server responded with a
                  * status code that falls out of the range of 2xx
                  */
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
+                console.log("readmeAPI: ", error.response.data);
+                console.log("readmeAPI: ", error.response.status);
+                console.log("readmeAPI: ", error.response.headers);
+                console.log("readmeAPI: ", slug);
             } else if (error.request) {
                 /*
                  * The request was made but no response was received, `error.request`
                  * is an instance of XMLHttpRequest in the browser and an instance
                  * of http.ClientRequest in Node.js
                  */
-                console.log(error.request);
+                console.log("readmeAPI: ", error.request);
             } else {
                 // Something happened in setting up the request and triggered an Error
-                console.log('Error', error.message);
+                console.log("readmeAPI: ", error.message);
             }
-            console.log(error);
+            console.log("readmeAPI: ", error);
         }
     };
 

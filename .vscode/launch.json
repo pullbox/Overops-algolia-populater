@@ -16,8 +16,44 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Test Init_categories to Mongodb.js",
-            "program": "${workspaceFolder}/algolia-crawler/util/init_categories_to_MongoDB.js",
+            "name": "Test V2 pop Docs into Algolia",
+            "program": "${workspaceFolder}/algolia-crawler/populate_documentation_algolia_index_v2.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Promise test",
+            "program": "${workspaceFolder}/algolia-crawler/Test/Promise_test.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test pop Docs into Algolia",
+            "program": "${workspaceFolder}/algolia-crawler/populate_documentation_algolia_index.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test populate_Versions.js",
+            "program": "${workspaceFolder}/algolia-crawler/util/populate_version_to_MongoDB.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test populate_categories to Mongodb.js",
+            "program": "${workspaceFolder}/algolia-crawler/util/populate_categories_to_MongoDB.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]

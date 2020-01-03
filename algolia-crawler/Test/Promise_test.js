@@ -1,13 +1,13 @@
 var algoliasearch = require('algoliasearch');
 var htmlToText = require('html-to-text');
-var zenConfig = require('./configuration');
+var zenConfig = require('../configuration');
 var jsonQuery = require('json-query');
-const mongo2 = require('./db/mongodb');
-const prmVersions = require('./promises/prmVersions');
-const prmCategories = require('./promises/prmCategories');
-const prmSlugs = require('./promises/prmSlugs');
+const mongo2 = require('../db/mongodb');
+const prmVersions = require('../promises/prmVersions');
+const prmCategories = require('../promises/prmCategories');
+const prmSlugs = require('../promises/prmSlugs');
 
-const readme = require('./db/readmeApi');
+const readme = require('../db/readmeApi');
 const docs = new readme();
 
 let regexp = /^[a-zA-Z0-9-]+$/;
@@ -26,7 +26,13 @@ Promise.all([pdelete, pslugs, pversions, psections])
         const versions = resolve[2];
         const sections = resolve[3];
 
-        console.log("deleted old indexes: ", deleted);
+        console.log("Delete old indexes: ");
+        console.log("deleted: ", deleted);
+        // console.log("slugs: ", slugs.length);
+        // console.log("slug: ", slugs[0]);
+        // console.log("versions: ", versions[0]);
+        // console.log("sections: ", sections[0]);
+
 
         for (let index = 0; index < slugs.length; index++) {
 
@@ -36,13 +42,12 @@ Promise.all([pdelete, pslugs, pversions, psections])
 
             processslug(slugs[index], index)
                 .then((result) => {
-                    if (result) {
-                        var data = result.data;
-                        // create algolia JSON
-                        if (data) {
-                            console.log("Create Index: ", data.title)
-                            return createAlgoliaIndex(data, slugs[index], resolve)
-                        }
+                    //         console.log("result: ", result)
+                    var data = result.data;
+                    // create algolia JSON
+                    if (data) {
+                        console.log("Create Index: ", data.title)
+                        return createAlgoliaIndex(data, slugs[index], resolve)
                     }
                 })
                 .then((algoliarecord) => {
@@ -60,6 +65,9 @@ Promise.all([pdelete, pslugs, pversions, psections])
                     console.log("Algoila add index error: ", err);
                 })
         }
+    })
+    .then((results) => {
+        console.log("finished: ", results)
     })
     .catch((error) => {
         console.log("something happened: ", error)
@@ -82,6 +90,7 @@ async function writeAlgoliaIndex(algoliarecord) {
     var index = algolia.initIndex(algoliaIndexName);
     try {
         const content = await index.saveObject(algoliarecord)
+        console.log("writeAPI content: ", content)
         return content
     } catch (error) {
         console.log("writeAPI Error: ", err)
@@ -109,7 +118,7 @@ async function createAlgoliaIndex(zendeskdata, doc, resolve) {
         algoliarecord["comment_count"] = 0;
         algoliarecord["category"] = categoryJson(zendeskdata.topic_id);
         algoliarecord["lable_names"] = null;
-        algoliarecord["section"] = sectionJson(zendeskdata.category, sections)
+        algoliarecord["section"] = sectionJson(zendeskdata.category, sections) 
         algoliarecord["version"] = versions.find(function(element) { return element._id == zendeskdata.version }).version
         algoliarecord["_id"] = zendeskdata._id;
         algoliarecord["id"] = zendeskdata._id;

@@ -4,6 +4,21 @@ module.exports = {
      * 
      */
 
+    getCategories: (client) => (
+        new Promise((resolve, reject) => {
+
+            client
+                .db('algolia')
+                .collection('categories')
+                .find()
+                .toArray((err, data) => {
+                    (err || data.length === 0) ?
+                    resolve({ error: 'no data' }): resolve(data);
+                });
+        })
+    ),
+
+
     getCategorybySlug: (client, slug) => (
         new Promise((resolve, reject) => {
 
@@ -27,7 +42,6 @@ module.exports = {
                 });
         })
     ),
-
 
 
     getCategorybyID: (client, Id ) => (
