@@ -1,6 +1,6 @@
 var mongo = require('mongodb');
 const HCCrawler = require('headless-chrome-crawler');
-
+let regexp = /^[a-zA-Z0-9-]+$/;
 
 deletelugsMongodb();
 
@@ -16,12 +16,11 @@ deletelugsMongodb();
             result.links.forEach(async(item) => {
                 console.log(item);
                 var slug = item.substring(item.lastIndexOf('/') + 1);
-
                 var hostname = (new URL(item)).hostname;
-
-                if (hostname == "doc.overops.com") {
-                    writetoMongodb(item, hostname, slug);
+                if ((hostname != "doc.overops.com") || (!regexp.test(slug))) {
+                    return;
                 }
+                writetoMongodb(item, hostname, slug);
                 console.log("done");
             })
         }
