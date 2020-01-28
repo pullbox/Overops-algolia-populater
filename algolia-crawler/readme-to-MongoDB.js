@@ -95,11 +95,11 @@ function createJSON(pageurl, hostname, slug) {
 
 function writetoMongodb(pageurl, hostname, slug) {
 
-    var mongoclient = mongo.MongoClient;
+    var mongoclient2 = mongo.MongoClient;
     var mongoUrl = 'mongodb://localhost:27017/algolia';
 
 
-    mongoclient.connect(mongoUrl, function(err, db) {
+    mongoclient2.connect(mongoUrl, function(err, db) {
         if (err) {
             console.error(err);
             throw err;
