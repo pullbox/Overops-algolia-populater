@@ -35,6 +35,8 @@ categories.push(new Category("build-tools", "", "Build Tools"));
 categories.push(new Category("attaching-the-agent", "", "Attaching the Agent"));
 categories.push(new Category("overops-switches", "", "OverOps Switches"));
 categories.push(new Category("administration-settings", "", "Administration Settings"));
+categories.push(new Category("settings", "", "Settings"));
+
 
 
 console.log("--------------------------");
