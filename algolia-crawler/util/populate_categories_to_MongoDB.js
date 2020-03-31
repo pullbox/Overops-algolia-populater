@@ -10,12 +10,12 @@ const docs = new readme();
 // mongod
 
 let categories = [];
-categories.push(new Category("get-started", "", "Introduction"));
-categories.push(new Category("whats-new", "", "What's New"));
-categories.push(new Category("general", "", "Getting Started"));
+categories.push(new Category("get-started", "", "Getting started"));
+categories.push(new Category("whats-new", "", "Release Notes"));
+//categories.push(new Category("general", "", "Getting Started"));
 categories.push(new Category("security-1", "", "OverOps Product End of Life"));
 categories.push(new Category("new-installation-portal", "", "Install OverOps"));
-categories.push(new Category("java-installation", "", "Java Installation"));
+//categories.push(new Category("java-installation", "", "Java Installation"));
 categories.push(new Category("net-installation", "", ".NET Installation"));
 categories.push(new Category("upgrading-overops", "", "Upgrading or Uninstalling"));
 
@@ -27,14 +27,14 @@ categories.push(new Category("integrations-to-overops", "", "Prevent"));
 categories.push(new Category("reporting-and-publishing-metrics", "", "Reporting and Publishing"));
 categories.push(new Category("customizations", "", "Customizations"));
 categories.push(new Category("installation-advanced-settings-beta", "", "Advanced Configurations"));
-categories.push(new Category("deployment-automation", "", "Deployment Automation"));
-categories.push(new Category("application-performance-monitoring-apm-integrations", "", "Appliction Performance Monitoring (APM) Integrations"));
+//categories.push(new Category("deployment-automation", "", "Deployment Automation"));
+//categories.push(new Category("application-performance-monitoring-apm-integrations", "", "Appliction Performance Monitoring (APM) Integrations"));
 
 categories.push(new Category("security", "", "Security"));
 categories.push(new Category("build-tools", "", "Build Tools"));
 categories.push(new Category("attaching-the-agent", "", "Attaching the Agent"));
-categories.push(new Category("overops-switches", "", "OverOps Switches"));
-categories.push(new Category("administration-settings", "", "Administration Settings"));
+//categories.push(new Category("overops-switches", "", "OverOps Switches"));
+//categories.push(new Category("administration-settings", "", "Administration Settings"));
 categories.push(new Category("settings", "", "Settings"));
 
 
