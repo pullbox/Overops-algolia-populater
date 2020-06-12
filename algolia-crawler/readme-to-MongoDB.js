@@ -56,13 +56,13 @@ function deletelugsMongodb() {
     mongoclient.connect(mongoUrl, function(err, db) {
         if (err) {
             console.error(err);
-            throw err;
+            console.log("Connecto to DB error: ", err) 
         }
 
         var dbo = db.db("algolia");
 
         dbo.collection("slugs").drop(function(err, delOK) {
-            if (err) throw err;
+            if (err) console.log("Delete DB error: ", err) ;
             if (delOK) console.log("Collection deleted");
             db.close();
         });
