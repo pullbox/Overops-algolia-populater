@@ -1,3 +1,5 @@
+const errorLog = require('../util/logger').errorlog;
+const successlog = require('../util/logger').successlog;
 var algoliasearch = require('algoliasearch');
 var htmlToText = require('html-to-text');
 var zenConfig = require('./configuration');
@@ -8,6 +10,7 @@ const prmCategories = require('./promises/prmCategories');
 const prmSlugs = require('./promises/prmSlugs');
 
 const readme = require('./db/readmeApi');
+const { errorlog } = require('./util/logger');
 const docs = new readme();
 
 let regexp = /^[a-zA-Z0-9-]+$/;
@@ -26,7 +29,7 @@ Promise.all([pdelete, pslugs, pversions, psections])
         const versions = resolve[2];
         const sections = resolve[3];
 
-        console.log("deleted old indexes: ", deleted);
+        succcesslog.info("deleted old indexes: ", deleted);
 
         for (let index = 0; index < slugs.length; index++) {
 
@@ -40,29 +43,29 @@ Promise.all([pdelete, pslugs, pversions, psections])
                         var data = result.data;
                         // create algolia JSON
                         if (data) {
-                            console.log("Create Index: ", data.title)
+                            succcesslog.info("Create Index: ", data.title)
                             return createAlgoliaIndex(data, slugs[index], resolve)
                         }
                     }
                 })
                 .then((algoliarecord) => {
                     if (algoliarecord) {
-                        console.log("Write: ", algoliarecord.title);
+                        succcesslog.info("Write: ", algoliarecord.title);
                         let content = writeAlgoliaIndex(algoliarecord)
                         return content
                     }
                 })
                 .then((result) => {
-                    console.log("Index written at ", result.updatedAt)
+                    succcesslog.info("Index written at ", result.updatedAt)
                     return "ok"
                 })
                 .catch((err) => {
-                    console.log("Algoila add index error: ", err);
+                    errorlog.error("Algoila add index error: ", err);
                 })
         }
     })
     .catch((error) => {
-        console.log("something happened: ", error)
+        errorlog.error("something happened: ", error)
     })
 
 
@@ -84,7 +87,7 @@ async function writeAlgoliaIndex(algoliarecord) {
         const content = await index.saveObject(algoliarecord)
         return content
     } catch (error) {
-        console.log("writeAPI Error: ", err)
+        errorlog.error("writeAPI Error: ", err)
     }
 }
 
@@ -134,7 +137,7 @@ async function createAlgoliaIndex(zendeskdata, doc, resolve) {
             algoliarecord["image"] = myimage;
         }
     } catch (error) {
-        console.log("createIndex catch error: ", error)
+        errorlog.error("createIndex catch error: ", error)
         reject(error);
     }
     return algoliarecord
