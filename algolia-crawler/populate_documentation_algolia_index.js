@@ -160,7 +160,7 @@ async function createAlgoliaIndex(zendeskdata, doc, resolve) {
         console.log("CreateIndex Catch Error: ", error, zendeskdata);
         //logger.error("createIndex catch error: ", JSON.stringify(error));
         //reject(error);
-        return error;
+        return null;
     }
     return algoliarecord;
 }
@@ -185,13 +185,17 @@ function localeJson(varlocale) {
 }
 
 function sectionJson(sec_id, sections) {
-    
+    try{
         var section = {} // empty object
         section["id"] = sec_id;
         section["title"] = sections.find(function(element) { return element.id == sec_id }).title;
         section["full_path"]
         section["user_segment"]
-
+    }
+    catch {
+        console.log("Category lookup failed: ", error.message);
+        throw(error);
+    }
     return section;
 }
 
