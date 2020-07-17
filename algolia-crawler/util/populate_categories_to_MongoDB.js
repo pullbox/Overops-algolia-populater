@@ -15,7 +15,7 @@ categories.push(new Category("whats-new", "", "Release Notes"));
 //categories.push(new Category("general", "", "Getting Started"));
 categories.push(new Category("security-1", "", "OverOps Product End of Life"));
 categories.push(new Category("new-installation-portal", "", "Install OverOps"));
-//categories.push(new Category("java-installation", "", "Java Installation"));
+categories.push(new Category("java-installation", "", "Java Installation"));
 categories.push(new Category("net-installation", "", ".NET Installation"));
 categories.push(new Category("installation-advanced-settings-beta", "", "Advanced Configurations"));
 categories.push(new Category("upgrading-overops", "", "Upgrading or Uninstalling"));

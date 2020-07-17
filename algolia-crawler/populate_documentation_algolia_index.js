@@ -1,5 +1,5 @@
-const errorLog = require('../util/logger').errorlog;
-const successlog = require('../util/logger').successlog;
+const errorLog = require('./util/logger').errorlog;
+const successlog = require('./util/logger').successlog;
 var algoliasearch = require('algoliasearch');
 var htmlToText = require('html-to-text');
 var zenConfig = require('./configuration');
@@ -29,7 +29,7 @@ Promise.all([pdelete, pslugs, pversions, psections])
         const versions = resolve[2];
         const sections = resolve[3];
 
-        succcesslog.info("deleted old indexes: ", deleted);
+        successlog.info("deleted old indexes: ", deleted);
 
         for (let index = 0; index < slugs.length; index++) {
 
@@ -43,20 +43,20 @@ Promise.all([pdelete, pslugs, pversions, psections])
                         var data = result.data;
                         // create algolia JSON
                         if (data) {
-                            succcesslog.info("Create Index: ", data.title)
+                            successlog.info("Create Index: ", data.title)
                             return createAlgoliaIndex(data, slugs[index], resolve)
                         }
                     }
                 })
                 .then((algoliarecord) => {
                     if (algoliarecord) {
-                        succcesslog.info("Write: ", algoliarecord.title);
+                        successlog.info("Write: ", algoliarecord.title);
                         let content = writeAlgoliaIndex(algoliarecord)
                         return content
                     }
                 })
                 .then((result) => {
-                    succcesslog.info("Index written at ", result.updatedAt)
+                    successlog.info("Index written at ", result.updatedAt)
                     return "ok"
                 })
                 .catch((err) => {
