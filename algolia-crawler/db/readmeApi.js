@@ -38,8 +38,8 @@ module.exports = class readmeAPI {
                 // console.log(error.response.data);
                 console.log("Type: " +  type + " Slug:  " + slug)
                 console.log(error.response.status);
-                console.log(error.response.message)
-                    // console.log(error.response.headers);
+                console.log(error.response.config.url);
+                console.log(error.response.data);
             } else if (error.request) {
                 /*
                  * The request was made but no response was received, `error.request`
@@ -51,7 +51,7 @@ module.exports = class readmeAPI {
                 // Something happened in setting up the request and triggered an Error
                 console.log('Error', error.message);
             }
-            console.log(error);
+            //console.log(error);
         }
     };
 
