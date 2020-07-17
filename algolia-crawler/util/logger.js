@@ -1,40 +1,58 @@
- /**
- * Configurations of logger.
- */
+// Include the logger module
 const winston = require('winston');
-const winstonRotator = require('winston-daily-rotate-file');
+require('winston-daily-rotate-file');
+const { combine, timestamp, label, printf } = winston.format;
 
-const consoleConfig = [
-  new winston.transports.Console({
-    'colorize': true
-  })
-];
+const logFormat = printf(({ level, message, label, timestamp }) => {
+    return `${timestamp} [${label}] ${level}: ${message}`;
+})
 
-const createLogger = new winston.Logger({
-  'transports': consoleConfig
+const logger = winston.createLogger({
+    level: 'info',
+    format: combine(
+        label({ label: '' }),
+        timestamp(),
+        logFormat
+    ),
+    transports: [
+        //
+        // - Write to all logs with level `info` and below to `combined.log`
+        // - Write all logs error (and below) to `error.log`.
+        //
+        new(winston.transports.DailyRotateFile)({
+            filename: 'logs/error-%DATE%.log',
+            level: 'error',
+            handleExceptions: true,
+            datePattern: 'YYYY-MM-DD-HH',
+            zippedArchive: true,
+            maxSize: '20m',
+            maxFiles: '5d'
+        }),
+        new(winston.transports.DailyRotateFile)({
+            filename: 'logs/combined-%DATE%.log',
+            datePattern: 'YYYY-MM-DD-HH',
+            zippedArchive: true,
+            maxSize: '20m',
+            maxFiles: '5d'
+        })
+    ]
 });
 
-const successLogger = createLogger;
-successLogger.add(winstonRotator, {
-  'name': 'access-file',
-  'level': 'info',
-  'filename': './logs/access.log',
-  'json': false,
-  'datePattern': 'yyyy-MM-dd-',
-  'prepend': true
-});
+//
+// If we're not in production then log to the `console` with the format:
+// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
+//
+if (process.env.NODE_ENV !== 'production') {
+    logger.add(new winston.transports.Console({
+        format: combine(
+            label({ label: '' }),
+            timestamp(),
+            logFormat
+        )
+    }));
+}
 
-const errorLogger = createLogger;
-errorLogger.add(winstonRotator, {
-  'name': 'error-file',
-  'level': 'error',
-  'filename': './logs/error.log',
-  'json': false,
-  'datePattern': 'yyyy-MM-dd-',
-  'prepend': true
-});
+// Add log command
+logger.log = logger.info;
 
-module.exports = {
-  'successlog': successLogger,
-  'errorlog': errorLogger
-};
+module.exports = logger;
