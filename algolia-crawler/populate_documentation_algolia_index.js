@@ -1,5 +1,5 @@
-const errorLog = require('./util/logger').errorlog;
-const successlog = require('./util/logger').successlog;
+const logger = require('./util/logger');
+
 var algoliasearch = require('algoliasearch');
 var htmlToText = require('html-to-text');
 var zenConfig = require('./configuration');
@@ -10,16 +10,22 @@ const prmCategories = require('./promises/prmCategories');
 const prmSlugs = require('./promises/prmSlugs');
 
 const readme = require('./db/readmeApi');
-const { errorlog } = require('./util/logger');
 const docs = new readme();
 
 let regexp = /^[a-zA-Z0-9-]+$/;
 
+//logger.info("----------------------------------------------------------");
+//logger.info("--------------       Start    ----------------------------");
+//logger.info("----------------------------------------------------------");
+
+console.log("node environment: ", process.env.NODE_ENV);
+//logger.info("logger node environment: " + process.env.NODE_ENV);
 
 pdelete = deleteagoliaIndex();
 pslugs = getslugs();
 pversions = getversions();
 psections = getsections();
+
 
 
 Promise.all([pdelete, pslugs, pversions, psections])
@@ -29,43 +35,55 @@ Promise.all([pdelete, pslugs, pversions, psections])
         const versions = resolve[2];
         const sections = resolve[3];
 
-        successlog.info("deleted old indexes: ", deleted);
+        console.log("delete: ", deleted);
+        //logger.info("deleted old indexes: ", JSON.stringify(deleted));
 
         for (let index = 0; index < slugs.length; index++) {
-
+          
+            //console.log("MissingSlug: ", slugs[index]._id, slugs[index].slug);
+          
             if ((slugs[index].hostname != "doc.overops.com") || (!regexp.test(slugs[index].slug))) {
                 continue;
             }
-
             processslug(slugs[index], index)
                 .then((result) => {
                     if (result) {
                         var data = result.data;
+                        // console.log("data: ", data);
                         // create algolia JSON
                         if (data) {
-                            successlog.info("Create Index: ", data.title)
-                            return createAlgoliaIndex(data, slugs[index], resolve)
+                            console.log("Create Index: ", data.title);
+                            //logger.info("Create Index: ", JSON.stringify(data.title));
+                            return createAlgoliaIndex(data, slugs[index], resolve);
                         }
                     }
+
                 })
                 .then((algoliarecord) => {
                     if (algoliarecord) {
-                        successlog.info("Write: ", algoliarecord.title);
+                        console.log("Write: " + algoliarecord.title);
+                        //logger.info("Write: " + algoliarecord.title);
                         let content = writeAlgoliaIndex(algoliarecord)
                         return content
                     }
+
                 })
                 .then((result) => {
-                    successlog.info("Index written at ", result.updatedAt)
+                    //console.log("result: ", result);
+                    console.log("Index written: " + result.updatedAt);
+                    //logger.info("Index written at " + result.updatedAt)
                     return "ok"
                 })
                 .catch((err) => {
-                    errorlog.error("Algoila add index error: ", err);
+                    console.log("Algolia add index error: ", err);
+                    //logger.error("Algoila add index error: ", err);
                 })
+
         }
     })
     .catch((error) => {
-        errorlog.error("something happened: ", error)
+        console.log("Promise.all failed: ", error);
+        //logger.error("Promise.all failed ", JSON.stringify(error));
     })
 
 
@@ -87,7 +105,8 @@ async function writeAlgoliaIndex(algoliarecord) {
         const content = await index.saveObject(algoliarecord)
         return content
     } catch (error) {
-        errorlog.error("writeAPI Error: ", err)
+        console.log("WriteAPI Error: ", error);
+        //logger.error("writeAPI Error: ", JSON.stringify(error));
     }
 }
 
@@ -99,6 +118,7 @@ async function writeAlgoliaIndex(algoliarecord) {
 async function createAlgoliaIndex(zendeskdata, doc, resolve) {
     const versions = resolve[2];
     const sections = resolve[3];
+
     try {
         jsonObj = [];
         algoliarecord = {}
@@ -137,10 +157,12 @@ async function createAlgoliaIndex(zendeskdata, doc, resolve) {
             algoliarecord["image"] = myimage;
         }
     } catch (error) {
-        errorlog.error("createIndex catch error: ", error)
-        reject(error);
+        console.log("CreateIndex Catch Error: ", error, zendeskdata);
+        //logger.error("createIndex catch error: ", JSON.stringify(error));
+        //reject(error);
+        return error;
     }
-    return algoliarecord
+    return algoliarecord;
 }
 
 
@@ -163,11 +185,13 @@ function localeJson(varlocale) {
 }
 
 function sectionJson(sec_id, sections) {
-    var section = {} // empty object
-    section["id"] = sec_id;
-    section["title"] = sections.find(function(element) { return element.id == sec_id }).title;
-    section["full_path"]
-    section["user_segment"]
+    
+        var section = {} // empty object
+        section["id"] = sec_id;
+        section["title"] = sections.find(function(element) { return element.id == sec_id }).title;
+        section["full_path"]
+        section["user_segment"]
+
     return section;
 }
 
